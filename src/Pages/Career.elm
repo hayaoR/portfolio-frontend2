@@ -1,7 +1,7 @@
 module Pages.Career exposing (Model, Msg, page)
 
 import Gen.Params.Career exposing (Params)
-import Gen.Route as Route exposing (Route)
+import Gen.Route exposing (Route)
 import Html exposing (Html, div, h2, p, text)
 import Html.Attributes exposing (class)
 import Http exposing (expectJson)
@@ -15,7 +15,7 @@ import View exposing (View)
 
 
 page : Shared.Model -> Request.With Params -> Page.With Model Msg
-page shared req =
+page _ req =
     Page.element
         { init = init
         , update = update
@@ -105,5 +105,5 @@ viewCareer career =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none

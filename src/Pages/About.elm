@@ -1,7 +1,7 @@
 module Pages.About exposing (Model, Msg, page)
 
 import Gen.Params.About exposing (Params)
-import Gen.Route as Route exposing (Route)
+import Gen.Route exposing (Route)
 import Html exposing (Html, div, h3, img, p, text)
 import Html.Attributes exposing (alt, class, src)
 import Http
@@ -15,7 +15,7 @@ import View exposing (View)
 
 
 page : Shared.Model -> Request.With Params -> Page.With Model Msg
-page shared req =
+page _ req =
     Page.element
         { init = init
         , update = update
@@ -73,16 +73,17 @@ view title route model =
     }
 
 
+body : Model -> Html Msg
 body model =
     div [ class "section" ]
         [ div [ class "content" ]
             [ div [ class "center" ] [ img [ src model.img, alt "近影", class "hayao" ] [] ]
-            , h3 [] [ text "hayao" ]
+            , h3 [] [ text "Hayao" ]
             , p [] [ text model.about.text ]
             ]
         ]
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
